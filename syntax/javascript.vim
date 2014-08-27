@@ -94,6 +94,7 @@ hi def link jsGlobals Special
 syn keyword jsTypes true false null undefined
 syn keyword jsProto prototype
 syn keyword jsFunc function
+syn keyword jsClasses class extends constructor
 syn keyword jsInstances delete new instanceof typeof
 syn keyword jsIdentifier arguments var let void yield
 syn keyword jsControls if else switch do while for in try catch throw finally return with break continue case default
@@ -101,12 +102,13 @@ syn keyword jsMessage alert confirm prompt status
 hi def link jsTypes Type
 hi def link jsProto Type
 hi def link jsFunc Keyword
+hi def link jsClasses Keyword
 hi def link jsInstances Keyword
 hi def link jsControls Keyword
 hi def link jsMessage Keyword
 hi def link jsIdentifier Keyword
 
-syn keyword jsReserved abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws const goto private transient implements protected volatile double import public
+syn keyword jsReserved abstract enum int short boolean export interface static byte long super char final native synchronized float package throws const goto private transient implements protected volatile double import public
 hi def link jsReserved Error
 
 " " TODO: update list
