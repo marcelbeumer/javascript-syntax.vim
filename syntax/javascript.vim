@@ -13,7 +13,6 @@ endif
 
 setlocal iskeyword+=$
 syn sync fromstart
-syn cluster jsAll contains=NULL
 
 " Comments
 syn match jsNodeSheBang "^#!.*/bin/env\s\+node\>"
@@ -49,28 +48,14 @@ syn match jsOpSymbols "=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-="
 syn match jsEndColons "[;,]" " all ; and ,
 syn match jsLogicSymbols "\(&&\)\|\(||\)"
 syn match jsObjAssign /@\?\I\i*\s*\ze::\@!/ " like foo: 12
-" hi def link jsOpSymbols Operator
-" hi def link jsLogicSymbols Operator
-" hi def link jsBraces Error
-" hi def link jsParens Error
-" hi def link jsEndColons Comment
-" hi def link jsObjAssign Constant
-
-" Context
-syn match jsContext "\<\(this\|that\)\>"
-syn match jsContextAccess "\<\(this\|that\)[.\[]\"\?\w\{1,\}\"\?\]\?" contains=jsContext
-hi def link jsContext Special
-hi def link jsContextAccess Special
 
 " Functions
-syn match jsFuncArg "\w*" contained
-syn region jsFuncArgList start=/ function(/ end="\([^)]*\)" contains=jsFuncArg,jsFunc,jsClassname
-syn match jsFuncName "\w\{1,\}" contained containedin=jsFuncNameAsLeft
-syn match __jsFuncNamePropLeft "\w\{1,\}\s\?:" contained contains=jsFuncName
-syn match __jsFuncNamePropStatement "\w\{1,\}\s\?:.*function" contains=__jsFuncNamePropLeft,jsFunc,jsFuncArgList
-syn match __jsFuncNameAsLeft "\w\{1,\}\s\?=" contained contains=jsFuncName
-syn match __jsFuncNameAsStatement "\w\{1,\}\s\?=.*function" contains=__jsFuncNameAsLeft,jsFunc,jsFuncArgList
-hi def link jsFuncArg Constant
+syn keyword jsFunc function contained
+syn match jsArrowFunc "=>"
+syn match jsFuncName "\w\{1,\}" contained
+syn match jsFuncDef "\(\w\{1,\}\s*[:=]\s*\)\?\<function\>\*\?\(\s*\w\{1,\}\)\?" contains=jsFunc,jsFuncName
+syn match jsArrowFuncDef "\w\{1,\}\s*=\s*(.*)\s*=>" contains=jsArrowFunc,jsFuncName
+hi def link jsFunc Keyword
 hi def link jsFuncName Function
 
 " Things based on convention or library
@@ -83,36 +68,32 @@ hi def link jsUnderscoreCalls Special
 
 " Keywords
 syn keyword jsBrowser window navigator location document history
-syn keyword jsModule require define exports module
-syn keyword jsDev console $ jQuery debugger
+syn keyword jsModule require define export default exports module import from as
+syn keyword jsDev console debugger logger
 syn keyword jsGlobals Array Boolean Date Function Infinity Math Number NaN Object RegExp String Error
 hi def link jsBrowser Special
 hi def link jsModule Special
 hi def link jsGlobals Special
-" hi def link jsDev Special
+hi def link jsDev Special
 
 syn keyword jsTypes true false null undefined
+syn keyword jsContext this that
 syn keyword jsProto prototype
-syn keyword jsFunc function
 syn keyword jsClasses class extends constructor
 syn keyword jsInstances delete new instanceof typeof
-syn keyword jsIdentifier arguments var let void yield
+syn keyword jsIdentifier arguments super var let const void yield yield*
 syn keyword jsControls if else switch do while for in try catch throw finally return with break continue case default
 syn keyword jsMessage alert confirm prompt status
 hi def link jsTypes Type
 hi def link jsProto Type
-hi def link jsFunc Keyword
 hi def link jsClasses Keyword
 hi def link jsInstances Keyword
 hi def link jsControls Keyword
 hi def link jsMessage Keyword
 hi def link jsIdentifier Keyword
 
-syn keyword jsReserved abstract enum int short boolean export interface static byte long super char final native synchronized float package throws const goto private transient implements protected volatile double import public
+syn keyword jsReserved abstract enum int short boolean export interface static byte long char final native synchronized float package throws goto private transient implements protected volatile double import public
 hi def link jsReserved Error
-
-" " TODO: update list
-" syn cluster jsAll add=jsComment,jsLineComment,jsDocComment,jsStringD,jsStringS,jsRegexpString,jsNumber,jsFloat,jsLabel,jsSource,jsOperator,jsBoolean,jsNull,jsFunc,jsConditional,jsRepeat,jsBranch,jsStatement,jsGlobalObjects,jsMessage,jsIdentifier,jsExceptions,jsReserved,jsDomErrNo,jsDomNodeConsts,jsDotNotation,jsBrowserObjects,jsDOMObjects,jsAjaxObjects,jsDOMMethods,jsHtmlElemProperties,jsDOMProperties,jsEventListenerMethods,jsAjaxProperties,jsAjaxMethods,jsFuncArg,jsClassname,jsObjAssign,jsUnderscoreCalls,jsFuncArgList,jsFunc
 
 function! JavaScriptFold()
     setl foldmethod=syntax
