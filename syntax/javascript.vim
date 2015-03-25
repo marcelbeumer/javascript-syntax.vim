@@ -84,6 +84,7 @@ syn keyword jsInstances delete new instanceof typeof
 syn keyword jsIdentifier arguments super var let const void yield yield*
 syn keyword jsControls if else switch do while for in try catch throw finally return with break continue case default
 syn keyword jsMessage alert confirm prompt status
+hi def link jsContext Keyword
 hi def link jsTypes Type
 hi def link jsProto Type
 hi def link jsClasses Keyword
