@@ -64,6 +64,7 @@ syn match jsClassname /\<\u\w*\>/
 syn match jsMethodName "\w\{1,\}" contained
 syn match jsMethodArgs "(.\{-})" contained
 syn match jsMethodDef "^\s*\w\{1,\}\s*(.\{-})\s*{" contains=jsMethodName,jsMethodArgs
+syn match __noJsMethodDef "^\s*\(if\|then\|else\|switch\|do\|while\|for\)" contains=jsControls
 hi def link jsClassname Structure
 hi def link jsClasses Keyword
 hi def link jsMethodName Function
