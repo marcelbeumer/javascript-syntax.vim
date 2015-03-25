@@ -54,7 +54,8 @@ syn keyword jsFunc function contained
 syn match jsArrowFunc "=>"
 syn match jsFuncName "\w\{1,\}" contained
 syn match jsFuncDef "\(\w\{1,\}\s*[:=]\s*\)\?\<function\>\*\?\(\s*\w\{1,\}\)\?" contains=jsFunc,jsFuncName
-syn match jsArrowFuncDef "\w\{1,\}\s*=\s*(.*)\s*=>" contains=jsArrowFunc,jsFuncName
+syn match jsArrowFuncDef "\w\{1,\}\s*=\s*\((.*)\|\S\{1,\}\)\s*=>" contains=jsArrowFunc,jsFuncName,_jsArgsToArrow
+syn match _jsArgsToArrow "\((.*)\|\S\{1,\}\)\s*=>" contained
 hi def link jsFunc Keyword
 hi def link jsFuncName Function
 
