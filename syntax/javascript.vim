@@ -64,7 +64,8 @@ syn keyword jsClasses class extends constructor
 syn match jsClassname /\<\u\w*\>/
 syn match jsMethodName "\w\{1,\}" contained
 syn match jsMethodArgs "(.\{-})" contained
-syn match jsMethodDef "^\s*\w\{1,\}\s*(.\{-})\s*{" contains=jsMethodName,jsMethodArgs,jsControls
+syn match jsMethodDef "^\s*\w\{1,\}\s*(.\{-})\s*{" contains=jsMethodName,jsMethodArgs
+syn match _non_jsMethodDef "^\s*\(for\|if\|else\|switch\|do\|while\|try\|catch\|finally\|with\)\s*" contains=jsControls
 hi def link jsClassname Structure
 hi def link jsClasses Keyword
 hi def link jsMethodName Function
