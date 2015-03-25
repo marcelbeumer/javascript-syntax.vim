@@ -58,11 +58,20 @@ syn match jsArrowFuncDef "\w\{1,\}\s*=\s*(.*)\s*=>" contains=jsArrowFunc,jsFuncN
 hi def link jsFunc Keyword
 hi def link jsFuncName Function
 
-" Things based on convention or library
+" Classes
+syn keyword jsClasses class extends constructor
 syn match jsClassname /\<\u\w*\>/
+syn match jsMethodName "\w\{1,\}" contained
+syn match jsMethodArgs "(.\{-})" contained
+syn match jsMethodDef "^\s*\w\{1,\}\s*(.\{-})\s*{" contains=jsMethodName,jsMethodArgs
+hi def link jsClassname Structure
+hi def link jsClasses Keyword
+hi def link jsMethodName Function
+
+
+" Things based on convention or library
 syn match jsUnderScore "\<_\."
 syn match jsUnderscoreCalls "\<_[.\[]\"\?\w\{1,\}\"\?\]\?" contains=jsUnderScore
-hi def link jsClassname Structure
 hi def link jsUnderScore Special
 hi def link jsUnderscoreCalls Special
 
@@ -79,7 +88,6 @@ hi def link jsDev Special
 syn keyword jsTypes true false null undefined
 syn keyword jsContext this that
 syn keyword jsProto prototype
-syn keyword jsClasses class extends constructor
 syn keyword jsInstances delete new instanceof typeof
 syn keyword jsIdentifier arguments super var let const void yield yield*
 syn keyword jsControls if else switch do while for in try catch throw finally return with break continue case default
@@ -87,7 +95,6 @@ syn keyword jsMessage alert confirm prompt status
 hi def link jsContext Keyword
 hi def link jsTypes Type
 hi def link jsProto Type
-hi def link jsClasses Keyword
 hi def link jsInstances Keyword
 hi def link jsControls Keyword
 hi def link jsMessage Keyword
