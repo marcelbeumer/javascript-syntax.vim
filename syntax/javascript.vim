@@ -27,13 +27,19 @@ hi def link jsCommentTodo Todo
 
 " Strings
 syn match jsSpecial "\\\d\d\d\|\\."
-syn region jsStringD start=+"+ skip=+\\\\\|\\"+ end=+"\|$+ contains=jsSpecial,@htmlPreproc
-syn region jsStringS start=+'+ skip=+\\\\\|\\'+ end=+'\|$+ contains=jsSpecial,@htmlPreproc
+syn match  jsStringTemplateDelim "\${\|}" contained
+syn region jsStringTemplateVar start=+${+ end=+}+ contained contains=jsStringTemplateDelim keepend
+syn region jsStringTemplateString start=+`+ skip=+\\\(`\|$\)+  end=+`+ contains=jsStringTemplateVar,jsSpecial,@htmlPreproc keepend
+syn region jsStringSingle start=+'+ skip=+\\\\\|\\'+ end=+'\|$+ contains=jsSpecial,@htmlPreproc
+syn region jsStringDouble start=+"+ skip=+\\\\\|\\"+ end=+"\|$+ contains=jsSpecial,@htmlPreproc
 syn region jsRegexpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
-hi def link jsStringS String
-hi def link jsStringD String
-hi def link jsRegexpString String
 hi def link jsSpecial Special
+hi def link jsStringTemplateVar Special
+hi def link jsStringTemplateDelim Special
+hi def link jsStringSingle String
+hi def link jsStringDouble String
+hi def link jsStringTemplateString String
+hi def link jsRegexpString String
 
 " Numbers
 syn match jsNumber "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
