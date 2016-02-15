@@ -66,7 +66,7 @@ hi def link jsFunc Keyword
 hi def link jsFuncName Function
 
 " Classes
-syn keyword jsClasses class extends constructor
+syn keyword jsClasses class extends constructor static
 syn match jsClassname /\<\u\w*\>/
 syn match jsMethodName "\w\{1,\}" contained
 syn match jsMethodArgs "([a-zA-Z0-9$_, ]\{-})" contained
@@ -108,7 +108,7 @@ hi def link jsControls Keyword
 hi def link jsMessage Keyword
 hi def link jsIdentifier Keyword
 
-syn keyword jsReserved abstract enum int short boolean interface static byte long char final native synchronized float package throws goto private transient implements protected volatile double public
+syn keyword jsReserved abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
 hi def link jsReserved Error
 
 function! JavaScriptFold()
