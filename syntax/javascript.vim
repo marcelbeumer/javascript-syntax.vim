@@ -97,7 +97,7 @@ syn keyword jsTypes true false null undefined
 syn keyword jsContext this that
 syn keyword jsProto prototype
 syn keyword jsInstances delete new instanceof typeof
-syn keyword jsIdentifier arguments super var let const void yield yield*
+syn keyword jsIdentifier arguments super var let const type declare void yield yield*
 syn keyword jsControls if else switch do while for in try catch throw finally return with break continue case default
 syn keyword jsMessage alert confirm prompt status
 hi def link jsContext Keyword
