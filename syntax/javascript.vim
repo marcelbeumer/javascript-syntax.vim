@@ -108,7 +108,7 @@ hi def link jsControls Keyword
 hi def link jsMessage Keyword
 hi def link jsIdentifier Keyword
 
-syn keyword jsReserved abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
+syn keyword jsReserved abstract enum int short interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
 hi def link jsReserved Error
 
 function! JavaScriptFold()
